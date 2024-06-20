@@ -1,26 +1,28 @@
 <div>
-  Id: <span>{{ pokemons.id }}</span>
+  Id: <span>{{ selectedPokemons.id }}</span>
 </div>
 <div>
   <label for="name">Name : </label>
-  <input [(ngModel)]="pokemons.name" id="name" placeholder="name">
+  <input [(ngModel)]="selectedPokemons.name" id="name" placeholder="name">
 </div>
 <div>
   <label for="type">Type : </label>
-  <input [(ngModel)]="pokemons.type" id="type" placeholder="type">
+  <input [(ngModel)]="selectedPokemons.type" id="type" placeholder="type">
 </div>
 <div>
   <label for="weight">Weight : </label>
-  <input [(ngModel)]="pokemons.weight" id="weight" placeholder="weight">
+  <input [(ngModel)]="selectedPokemons.weight" id="weight" placeholder="weight">
 </div>
 
 <br><br><br>
 
 <div class="container">
   <h2>List of Pokemon : </h2>
-  <ul>
-    <li *ngFor="let pokemons of pokemon">
-      <span>{{ pokemons.name }} ( {{ pokemons.type }} )</span>
+  <ul class="pokemon">
+    <li *ngFor="let pokemons of pokemon" (click)="select(pokemons)">
+      <button type="button">
+        <span>{{ pokemons.name }} ( {{ pokemons.type }} )</span>
+      </button>
     </li>
   </ul>
 </div>

@@ -12,12 +12,11 @@ import { NgFor } from '@angular/common';
   styleUrl: './pokemon.component.css'
 })
 export class PokemonComponent {
-  pokemons: Pokemons = {
-    id: '3f9451b-2ac1-4497-be1c-b3b86facc9d3',
-    name: 'Bulbasaur',
-    type: 'Grass',
-    weight: 10
-  };
+  selectedPokemons: Pokemons = {} as Pokemons;
 
   pokemon = POKEMONS;
+
+  select = (pokemons: Pokemons): void => {
+    this.selectedPokemons = pokemons;
+  }
 }
