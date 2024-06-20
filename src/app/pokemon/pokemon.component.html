@@ -1,12 +1,26 @@
 <div>
-  Name: <span>{{ pokemons.name }}</span>
-</div>
-<div>
   Id: <span>{{ pokemons.id }}</span>
 </div>
 <div>
-  Type: <span>{{ pokemons.type }}</span>
+  <label for="name">Name : </label>
+  <input [(ngModel)]="pokemons.name" id="name" placeholder="name">
 </div>
 <div>
-  Weight: <span>{{ pokemons.weight }}</span>
+  <label for="type">Type : </label>
+  <input [(ngModel)]="pokemons.type" id="type" placeholder="type">
+</div>
+<div>
+  <label for="weight">Weight : </label>
+  <input [(ngModel)]="pokemons.weight" id="weight" placeholder="weight">
+</div>
+
+<br><br><br>
+
+<div class="container">
+  <h2>List of Pokemon : </h2>
+  <ul>
+    <li *ngFor="let pokemons of pokemon">
+      <span>{{ pokemons.name }} ( {{ pokemons.type }} )</span>
+    </li>
+  </ul>
 </div>
