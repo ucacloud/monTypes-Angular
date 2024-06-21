@@ -10,12 +10,22 @@ import { Observable, of } from 'rxjs';
 export class PokemonsService {
   constructor(private messageService: MessageService) { }
 
-  getPokemons(): Observable<Pokemons[]> {
+  getPokemon = (): Observable<Pokemons[]> => {
     this.messageService.add('About to fetch data from the API');
     const pokemon = of(POKEMONS);
     this.messageService.add('Done fetching data from API');
     return pokemon;
   }
 
+  getPokemons = (id: string): Observable<Pokemons> => {
+    const pokemons = POKEMONS.find(pokemons => pokemons.id === id);
 
+    this.messageService.add(`Fetched data for ID ${id} from API`)
+
+    if (pokemons) {
+      return of(pokemons);
+    }
+
+    return of({} as Pokemons);
+  }
 }

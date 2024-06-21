@@ -4,9 +4,9 @@
   <h2>List of Pokemon :</h2>
   <ul class="pokemon">
     <li *ngFor="let pokemons of pokemon" (click)="select(pokemons)" [class.selected]="selectedPokemons === pokemons">
-      
+      <a routerLink="/pokemon/{{pokemons.id}}">
         <span>{{ pokemons.name }} ( {{ pokemons.type }} )</span>
-      
+      </a>
     </li>
   </ul>
 </div>

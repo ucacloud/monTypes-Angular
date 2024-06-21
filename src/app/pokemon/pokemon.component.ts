@@ -1,16 +1,16 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { MessageService } from '../message.service';
 import { Pokemons } from '../pokemons';
 import { PokemonsService } from '../pokemons.service';
 import { PokemonsDetailComponent } from '../pokemons-detail/pokemons-detail.component';
 
-
 @Component({
   selector: 'app-pokemon',
   standalone: true,
-  imports: [FormsModule, NgFor, NgIf, PokemonsDetailComponent],
+  imports: [FormsModule, NgFor, NgIf, PokemonsDetailComponent, RouterLink],
   templateUrl: './pokemon.component.html',
   styleUrl: './pokemon.component.css'
 })
@@ -21,7 +21,7 @@ export class PokemonComponent {
   constructor(private pokemonsService: PokemonsService, private messageService: MessageService) {}
 
   getPokemon = (): void => {
-    this.pokemonsService.getPokemons().subscribe((pokemon) => {
+    this.pokemonsService.getPokemon().subscribe((pokemon) => {
       this.pokemon = pokemon;
     });
     }
