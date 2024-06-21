@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
-import { Pokemons } from '../pokemons';
-import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
-import { PokemonsDetailComponent } from '../pokemons-detail/pokemons-detail.component';
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MessageService } from '../message.service';
+import { Pokemons } from '../pokemons';
 import { PokemonsService } from '../pokemons.service';
+import { PokemonsDetailComponent } from '../pokemons-detail/pokemons-detail.component';
+
 
 @Component({
   selector: 'app-pokemon',
@@ -16,7 +18,7 @@ export class PokemonComponent {
   selectedPokemons!: Pokemons;
   pokemon: Pokemons[] = [];
 
-  constructor(private pokemonsService: PokemonsService) {}
+  constructor(private pokemonsService: PokemonsService, private messageService: MessageService) {}
 
   getPokemon = (): void => {
     this.pokemonsService.getPokemons().subscribe((pokemon) => {
@@ -25,6 +27,7 @@ export class PokemonComponent {
     }
 
   select = (pokemons: Pokemons): void => {
+    this.messageService.add(`Selected Pokemon ID : ${pokemons.id}`);
     this.selectedPokemons = pokemons;
   }
 
