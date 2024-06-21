@@ -3,18 +3,23 @@ import { MessageService } from './message.service';
 import { POKEMONS } from './mock-pokemon';
 import { Pokemons } from './pokemons';
 import { Observable, of } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PokemonsService {
-  constructor(private messageService: MessageService) { }
+  private pokemonUrl = 'http://localhost:3000/api/v1/pokemon';
+
+  constructor(
+    private messageService: MessageService,
+    private http: HttpClient,
+  ) { }
 
   getPokemon = (): Observable<Pokemons[]> => {
     this.messageService.add('About to fetch data from the API');
-    const pokemon = of(POKEMONS);
-    this.messageService.add('Done fetching data from API');
-    return pokemon;
+    
+    return this.http.get<Pokemons[]>(this.pokemonUrl);
   }
 
   getPokemons = (id: string): Observable<Pokemons> => {
