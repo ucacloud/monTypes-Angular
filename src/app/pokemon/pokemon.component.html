@@ -1,28 +1,14 @@
-<div>
-  Id: <span>{{ selectedPokemons.id }}</span>
-</div>
-<div>
-  <label for="name">Name : </label>
-  <input [(ngModel)]="selectedPokemons.name" id="name" placeholder="name">
-</div>
-<div>
-  <label for="type">Type : </label>
-  <input [(ngModel)]="selectedPokemons.type" id="type" placeholder="type">
-</div>
-<div>
-  <label for="weight">Weight : </label>
-  <input [(ngModel)]="selectedPokemons.weight" id="weight" placeholder="weight">
-</div>
 
-<br><br><br>
 
 <div class="container">
-  <h2>List of Pokemon : </h2>
+  <h2>List of Pokemon :</h2>
   <ul class="pokemon">
-    <li *ngFor="let pokemons of pokemon" (click)="select(pokemons)">
-      <button type="button">
+    <li *ngFor="let pokemons of pokemon" (click)="select(pokemons)" [class.selected]="selectedPokemons === pokemons">
+      
         <span>{{ pokemons.name }} ( {{ pokemons.type }} )</span>
-      </button>
+      
     </li>
   </ul>
 </div>
+
+<app-pokemons-detail [pokemons]="selectedPokemons"></app-pokemons-detail>

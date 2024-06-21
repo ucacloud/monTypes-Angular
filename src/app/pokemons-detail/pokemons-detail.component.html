@@ -1,0 +1,21 @@
+<div *ngIf="pokemons" class="container">
+  <div>
+    Id: <span>{{ pokemons.id }}</span>
+  </div>
+  <div>
+    <label for="name">Name : </label>
+    <input [(ngModel)]="pokemons.name" id="name" placeholder="name" />
+  </div>
+  <div>
+    <label for="type">Type : </label>
+    <input [(ngModel)]="pokemons.type" id="type" placeholder="type" />
+  </div>
+  <div>
+    <label for="weight">Weight : </label>
+    <input
+      [(ngModel)]="pokemons.weight"
+      id="weight"
+      placeholder="weight"
+    />
+  </div>
+</div>
