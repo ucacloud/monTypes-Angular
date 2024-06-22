@@ -4,12 +4,13 @@ import { POKEMONS } from './mock-pokemon';
 import { Pokemons } from './pokemons';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PokemonsService {
-  private pokemonUrl = 'http://localhost:3000/api/v1/pokemon';
+  private pokemonUrl = '/api/v1/pokemon';
 
   constructor(
     private messageService: MessageService,
@@ -23,14 +24,24 @@ export class PokemonsService {
   }
 
   getPokemons = (id: string): Observable<Pokemons> => {
-    const pokemons = POKEMONS.find(pokemons => pokemons.id === id);
+   this.messageService.add(`Fetched data for ID ${id} from API`)
+    return this.http.get<Pokemons>(`${this.pokemonUrl}/${id}`);
+  }
 
-    this.messageService.add(`Fetched data for ID ${id} from API`)
+  deletePokemons = (id: string): Observable<boolean> => {
+    
+    this.http.delete(`${this.pokemonUrl}/${id}`);
 
-    if (pokemons) {
-      return of(pokemons);
-    }
+    return of(true);
+  }
 
-    return of({} as Pokemons);
+  updatePokemons = (id: string, pokemons: Pokemons): Observable<Pokemons> => {
+    
+   return this.http.put<Pokemons>(`${this.pokemonUrl}/${id}`, pokemons);
+  }
+
+  createPokemons = (pokemons: Pokemons): Observable<Pokemons> => {
+    
+  return this.http.post<Pokemons>(`${this.pokemonUrl}`, pokemons);
   }
 }
