@@ -1,7 +1,8 @@
 .pokemon {
-  padding: 0;
+  padding: 100;
   list-style-type: none;
   width: 10em;
+  text-align: left;
 }
 
 .selected {
