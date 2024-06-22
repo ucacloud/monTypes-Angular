@@ -1,11 +1,17 @@
 
 
 <div class="container">
-  <h2>List of Pokemon :</h2>
+  <h2>Poke`mon Database :</h2>
+  <img
+  src="assets/images/backgroundGrass.png"
+  class="img-fluid rounded"
+  alt="backgroundGrass"
+/>
+  <div class="text-center">
   <ul class="pokemon">
     <li *ngFor="let pokemons of pokemon" (click)="select(pokemons)" [class.selected]="selectedPokemons === pokemons">
       <a routerLink="/pokemon/{{pokemons.id}}">
-        <span>{{ pokemons.name }} ( {{ pokemons.type }} )</span>
+        <span>( {{ pokemons.id }} ) {{ pokemons.name }}</span>
       </a>
     </li>
   </ul>

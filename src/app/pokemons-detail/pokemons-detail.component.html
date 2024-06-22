@@ -13,9 +13,11 @@
   <div>
     <label for="weight">Weight : </label>
     <input
-      [(ngModel)]="pokemons.weight"
-      id="weight"
-      placeholder="weight"
-    />
+      [(ngModel)]="pokemons.weight" id="weight" placeholder="weight" />
+  </div>
+  <div>
+    <marquee  behavior="alternate" direction="right">
+    <img [src]="pokemons.img">
+  </marquee>
   </div>
 </div>

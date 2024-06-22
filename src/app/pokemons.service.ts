@@ -4,7 +4,6 @@ import { POKEMONS } from './mock-pokemon';
 import { Pokemons } from './pokemons';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 
 @Injectable({
   providedIn: 'root'
@@ -28,20 +27,17 @@ export class PokemonsService {
     return this.http.get<Pokemons>(`${this.pokemonUrl}/${id}`);
   }
 
-  deletePokemons = (id: string): Observable<boolean> => {
-    
+  deletePokemons = (id: string): Observable<boolean> => {    
     this.http.delete(`${this.pokemonUrl}/${id}`);
 
     return of(true);
   }
 
-  updatePokemons = (id: string, pokemons: Pokemons): Observable<Pokemons> => {
-    
+  updatePokemons = (id: string, pokemons: Pokemons): Observable<Pokemons> => {    
    return this.http.put<Pokemons>(`${this.pokemonUrl}/${id}`, pokemons);
   }
 
-  createPokemons = (pokemons: Pokemons): Observable<Pokemons> => {
-    
+  createPokemons = (pokemons: Pokemons): Observable<Pokemons> => {    
   return this.http.post<Pokemons>(`${this.pokemonUrl}`, pokemons);
   }
 }
