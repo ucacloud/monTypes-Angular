@@ -14,7 +14,7 @@ import { PokemonsService } from '../pokemons.service';
   styleUrl: './pokemons-detail.component.css'
 })
 export class PokemonsDetailComponent {
-  @Input() pokemons?: Pokemons;
+  pokemons?: Pokemons;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,6 +31,17 @@ export class PokemonsDetailComponent {
     }); 
     }
   }
+
+  updatePokemons = (): void => {
+    const pokemonsId = this.route.snapshot.paramMap.get('id');
+
+    if (pokemonsId && this.pokemons) {
+      this.pokemonsService.updatePokemons(pokemonsId, this.pokemons)
+      .subscribe((pokemons: Pokemons) => {
+        this.pokemons = pokemons;
+    }); 
+  }
+}
 
   ngOnInit(): void {
     this.getPokemons();

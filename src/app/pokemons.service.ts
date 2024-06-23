@@ -27,10 +27,8 @@ export class PokemonsService {
     return this.http.get<Pokemons>(`${this.pokemonUrl}/${id}`);
   }
 
-  deletePokemons = (id: string): Observable<boolean> => {    
-    this.http.delete(`${this.pokemonUrl}/${id}`);
-
-    return of(true);
+  deletePokemons = (id: string): Observable<Object> => {    
+    return this.http.delete(`${this.pokemonUrl}/${id}`);
   }
 
   updatePokemons = (id: string, pokemons: Pokemons): Observable<Pokemons> => {    

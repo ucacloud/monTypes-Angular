@@ -33,7 +33,12 @@ export class PokemonComponent {
     this.messageService.add(`Selected Pokemon ID : ${pokemons.id}`);
     this.selectedPokemons = pokemons;
   };
-
+  
+  deletePokemons = (id: string): void => {
+    this.pokemonsService.deletePokemons(id).subscribe((res) => {
+      this.getPokemon();
+    });
+  }
   ngOnInit(): void {
     console.log('Invoked ngOnInit');
     this.getPokemon();

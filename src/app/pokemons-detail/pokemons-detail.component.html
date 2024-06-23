@@ -13,7 +13,10 @@
   <div>
     <label for="weight">Weight : </label>
     <input
-      [(ngModel)]="pokemons.weight" id="weight" placeholder="weight" />
+      [(ngModel)]="pokemons.weight" id="weight" type="number" placeholder="weight" />
+  </div>
+  <div>
+    <button type="button" (click)="updatePokemons()">Update</button>
   </div>
   <div>
     <marquee  behavior="alternate" direction="right">

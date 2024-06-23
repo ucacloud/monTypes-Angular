@@ -1,12 +1,11 @@
 .pokemon {
   padding: 100;
   list-style-type: none;
-  width: 10em;
+  width: 13em;
   text-align: left;
+  overflow: visible;
 }
 
-.selected {
-  background-color: #29279a98;
-  border-radius: 4px;
-  margin-left: 0.5em;
+.btn btn-danger {
+  text-align: left;
 }
