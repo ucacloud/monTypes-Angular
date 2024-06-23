@@ -1,22 +1,22 @@
 <div *ngIf="pokemons" class="container">
   <div>
-    Id: <span>{{ pokemons.id }}</span>
+    Poke'dex Id: <span>{{ pokemons.id }}</span>
   </div>
   <div>
     <label for="name">Name : </label>
-    <input [(ngModel)]="pokemons.name" id="name" placeholder="name" />
+    <input [(ngModel)]="pokemons.name" class="form-control w-25" style="background-color:#75b798" id="name" placeholder="name" />
   </div>
   <div>
     <label for="type">Type : </label>
-    <input [(ngModel)]="pokemons.type" id="type" placeholder="type" />
+    <input [(ngModel)]="pokemons.type" class="form-control w-25" style="background-color:#75b798" id="type" placeholder="type" />
   </div>
   <div>
     <label for="weight">Weight : </label>
     <input
-      [(ngModel)]="pokemons.weight" id="weight" type="number" placeholder="weight" />
+      [(ngModel)]="pokemons.weight" class="form-control w-25" style="background-color:#75b798" id="weight" type="number" placeholder="weight" />
   </div>
   <div>
-    <button type="button" (click)="updatePokemons()">Update</button>
+    <button type="button" class="btn btn-success" (click)="updatePokemons()">Update</button>
   </div>
   <div>
     <marquee  behavior="alternate" direction="right">

@@ -1,18 +1,26 @@
+<div class="card text-bg-success mb-3" style="max-width: 18rem;">
+  <div class="card-header">Header</div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">An item</li>
+    <li class="list-group-item">A second item</li>
+    <li class="list-group-item">A third item</li>
+  </ul>
+</div>
 <div class="container">
   <div>
     <label for="name">Name : </label>
-    <input [(ngModel)]="pokemons.name" id="name" placeholder="name" />
+    <input [(ngModel)]="pokemons.name" class="form-control w-25" style="background-color:#75b798" id="name" placeholder="name" />
   </div>
   <div>
     <label for="type">Type : </label>
-    <input [(ngModel)]="pokemons.type" id="type" placeholder="type" />
+    <input [(ngModel)]="pokemons.type" class="form-control w-25" style="background-color:#75b798" id="type" placeholder="type" />
   </div>
   <div>
     <label for="weight">Weight : </label>
     <input
-      [(ngModel)]="pokemons.weight" id="weight" type="number" placeholder="weight" />
+      [(ngModel)]="pokemons.weight" class="form-control w-25" style="background-color:#75b798" id="weight" type="number" placeholder="weight" />
   </div>
   <div>
-    <button type="button" (click)="createPokemons()">Create</button>
+    <button type="button" class="btn btn-success" (click)="createPokemons()">Create</button>
   </div>
 </div>

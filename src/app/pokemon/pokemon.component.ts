@@ -15,8 +15,10 @@ import { PokemonsDetailComponent } from '../pokemons-detail/pokemons-detail.comp
   styleUrl: './pokemon.component.css',
 })
 export class PokemonComponent {
-  selectedPokemons!: Pokemons;
   pokemon: Pokemons[] = [];
+
+  currentPage = 0;
+  pageSize = 10;
 
   constructor(
     private pokemonsService: PokemonsService,
@@ -27,11 +29,6 @@ export class PokemonComponent {
     this.pokemonsService.getPokemon().subscribe((pokemon) => {
       this.pokemon = pokemon;
     });
-  };
-
-  select = (pokemons: Pokemons): void => {
-    this.messageService.add(`Selected Pokemon ID : ${pokemons.id}`);
-    this.selectedPokemons = pokemons;
   };
   
   deletePokemons = (id: string): void => {
