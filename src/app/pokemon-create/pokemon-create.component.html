@@ -13,6 +13,11 @@
       [(ngModel)]="pokemons.weight" class="form-control w-25" style="background-color:#75b798" id="weight" type="number" placeholder="weight" />
   </div>
   <div>
+    <label for="img">Image : </label>
+    <input
+      [(ngModel)]="pokemons.img" class="form-control w-25" style="background-color:#75b798" id="img"  placeholder="Put URL here" />
+  </div>
+  <div>
     <button type="button" class="btn btn-success" (click)="createPokemons()">Create</button>
   </div>
 </div>
