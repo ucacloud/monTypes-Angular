@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Input } from '@angular/core';
 import { NgIf } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Pokemons } from '../pokemons';
 import { FormsModule } from '@angular/forms';
 import { PokemonsService } from '../pokemons.service';
@@ -19,6 +19,7 @@ export class PokemonsDetailComponent {
   constructor(
     private route: ActivatedRoute,
     private pokemonsService: PokemonsService,
+    private router: Router
   ) {}
 
   getPokemons = (): void => {
@@ -39,6 +40,7 @@ export class PokemonsDetailComponent {
       this.pokemonsService.updatePokemons(pokemonsId, this.pokemons)
       .subscribe((pokemons: Pokemons) => {
         this.pokemons = pokemons;
+        this.router.navigate(['/pokemon'])
     }); 
   }
 }
