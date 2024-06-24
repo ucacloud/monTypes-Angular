@@ -1,4 +1,4 @@
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { Pokemons } from '../pokemons';
 import { PokemonsService } from '../pokemons.service';
@@ -7,19 +7,25 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [NgFor, RouterLink],
+  imports: [NgFor, RouterLink, NgIf],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
   pokemon: Pokemons[] = [];
 
+  selectedPokemons! : Pokemons;
   currentPagePokemon: Pokemons[] = [];
   currentPage = 0;
   pageSize = 12;
   pageCount = 0;
 
   constructor(private pokemonService: PokemonsService) {}
+
+  selectPokemons = (pokemons: Pokemons) => {
+    this.selectedPokemons = pokemons
+    console.log(this.selectedPokemons)
+  }
 
   getPokedex = (): void => {
     this.pokemonService.getPokemon().subscribe((pokemon) => {
