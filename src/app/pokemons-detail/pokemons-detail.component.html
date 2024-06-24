@@ -13,14 +13,22 @@
   <div>
     <label for="weight">Weight : </label>
     <input
-      [(ngModel)]="pokemons.weight" class="form-control w-25" style="background-color:#75b798" id="weight" type="number" placeholder="weight" />
+      [(ngModel)]="pokemons.weight" class="form-control w-25" style="background-color:#75b798" id="weight" type="number" placeholder="{{pokemons.weight}}" />
   </div>
   <div>
     <button type="button" class="btn btn-success" (click)="updatePokemons()">Update</button>
   </div>
-  <div>
-    <marquee  behavior="alternate" direction="right">
-    <img [src]="pokemons.img">
-  </marquee>
+  <div class="relative">
+    <img
+    src="assets/images/backgroundGrass.png"
+    style="transform: translate(200px,-240px);"
+    class="z-10"
+    alt="backgroundGrass"
+    width="350" height="300"
+  />
+  <img 
+  [src]="pokemons.img"
+  style="transform: translate(-30px,-200px);">
+  
   </div>
 </div>

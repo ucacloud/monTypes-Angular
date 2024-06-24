@@ -17,8 +17,10 @@ import { PokemonsDetailComponent } from '../pokemons-detail/pokemons-detail.comp
 export class PokemonComponent {
   pokemon: Pokemons[] = [];
 
+  currentPagePokemon: Pokemons[] = [];
   currentPage = 0;
-  pageSize = 10;
+  pageSize = 16;
+  pageCount = 0;
 
   constructor(
     private pokemonsService: PokemonsService,
@@ -28,7 +30,28 @@ export class PokemonComponent {
   getPokemon = (): void => {
     this.pokemonsService.getPokemon().subscribe((pokemon) => {
       this.pokemon = pokemon;
+      this.pageCount = Math.ceil(this.pokemon.length / this.pageSize);
+      this.currentPagePokemon = this.pokemon.slice(0, this.pageSize);
+      console.log(`Pagecount = ${this.pageCount}`)
     });
+  };
+
+  previousPage = (): void => {
+        if (this.currentPage -1 < 0) {
+      return;
+    }
+    this.currentPage -= 1;
+    const startIndex = this.currentPage * this.pageSize;
+    this.currentPagePokemon = this.pokemon.slice(startIndex, startIndex + this.pageSize);
+  };
+
+  nextPage = (): void => {
+        if (this.currentPage +1 >= this.pageCount) {
+      return;
+    }
+    this.currentPage += 1;
+    const startIndex = this.currentPage * this.pageSize;
+    this.currentPagePokemon = this.pokemon.slice(startIndex, startIndex + this.pageSize);
   };
   
   deletePokemons = (id: string): void => {

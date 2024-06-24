@@ -1,6 +1,11 @@
-<h2>Pokemon Ranked by weight (decending)</h2>
+<h2>Pokemon Ordered by ID in Poke'dex</h2>
 <div class="container">
-  <button *ngFor="let pokemons of pokemon" routerLink="/pokemon/{{pokemons.id}}" type="button" class="btn btn-outline-success dash-btn">
-    {{ pokemons.name}}
-  </button>
+  <li *ngFor="let pokemons of currentPagePokemon"  type="button" class="btn btn-outline-success dash-btn">
+    <td>( {{pokemons.id}} ) {{pokemons.name}}</td>
+    <img 
+          [src]="pokemons.img"
+          >
+  </li>
+  <button style="margin:5px;" (click)="previousPage()" type="button" class="btn btn-success">&lt; -- Previous</button>
+  <button style="margin:5px;" (click)="nextPage()" type="button" class="btn btn-success">Next --&gt;</button>
 </div>

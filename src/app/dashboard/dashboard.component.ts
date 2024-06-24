@@ -14,16 +14,41 @@ import { RouterLink } from '@angular/router';
 export class DashboardComponent {
   pokemon: Pokemons[] = [];
 
+  currentPagePokemon: Pokemons[] = [];
+  currentPage = 0;
+  pageSize = 12;
+  pageCount = 0;
+
   constructor(private pokemonService: PokemonsService) {}
 
-  getTop5PokemonByWeight = (): void => {
+  getPokedex = (): void => {
     this.pokemonService.getPokemon().subscribe((pokemon) => {
-      // TODO: Only return top 5 from API
-      this.pokemon = pokemon.slice(0, 5);
+      this.pokemon = pokemon;
+      this.pageCount = Math.ceil(this.pokemon.length / this.pageSize);
+      this.currentPagePokemon = this.pokemon.slice(0, this.pageSize);
+      console.log(`Pagecount = ${this.pageCount}`)
     })
   }
 
+  previousPage = (): void => {
+    if (this.currentPage -1 < 0) {
+  return;
+}
+this.currentPage -= 1;
+const startIndex = this.currentPage * this.pageSize;
+this.currentPagePokemon = this.pokemon.slice(startIndex, startIndex + this.pageSize);
+};
+
+nextPage = (): void => {
+    if (this.currentPage +1 >= this.pageCount) {
+  return;
+}
+this.currentPage += 1;
+const startIndex = this.currentPage * this.pageSize;
+this.currentPagePokemon = this.pokemon.slice(startIndex, startIndex + this.pageSize);
+};
+
   ngOnInit(): void {
-    this.getTop5PokemonByWeight();
+    this.getPokedex();
   }
 }
