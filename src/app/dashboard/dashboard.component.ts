@@ -17,7 +17,7 @@ export class DashboardComponent {
   selectedPokemons! : Pokemons;
   currentPagePokemon: Pokemons[] = [];
   currentPage = 0;
-  pageSize = 12;
+  pageSize = 6;
   pageCount = 0;
 
   constructor(private pokemonService: PokemonsService) {}

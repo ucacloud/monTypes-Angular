@@ -1,17 +1,15 @@
 <h2 class="center">Pokemon Ordered by ID in Poke'dex</h2>
 <div class="center">
   <button *ngFor="let pokemons of currentPagePokemon"  type="button" (click)="selectPokemons(pokemons)"class="btn btn-outline-success dash-btn" >
-    <td>( {{pokemons.id}} ) {{pokemons.name}}</td>
+    <!-- <td>( {{pokemons.id}} ) {{pokemons.name}}</td> -->
     <img 
           [src]="pokemons.img"
           >
   </button>
-  <div style="min-height: 120px;">
-    
+  <div style="min-height: 120px;">    
       <div *ngIf="selectedPokemons" class="card card-body" style="width: 300px;">
-        {{selectedPokemons.name}} {{selectedPokemons.weight}}
-      </div>
-    
+        Name: {{selectedPokemons.name}} <br> ID:{{selectedPokemons.id}} <br> Type: {{selectedPokemons.type}} <br> Weight: {{selectedPokemons.weight}} 
+      </div>    
   </div>
   <div class="center">
   <button style="margin:5px;" (click)="previousPage()" type="button" class="btn btn-success">&lt; -- Previous</button>
