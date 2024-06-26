@@ -9,3 +9,19 @@
 .btn btn-danger {
   text-align: left;
 }
+
+.flex-container {
+  display: flex;
+}
+
+.flex-child {
+  flex: 1;
+}  
+
+.flex-child:first-child {
+  margin-left: 100px;
+} 
+
+.flex-child:last-child {
+  margin-right: 100px;
+} 

@@ -5,13 +5,15 @@ import { PokemonsDetailComponent } from './pokemons-detail/pokemons-detail.compo
 import { PokemonCreateComponent } from './pokemon-create/pokemon-create.component';
 import { TechStackComponent } from './tech-stack/tech-stack.component';
 import { ResumeComponent } from './resume/resume.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 export const routes: Routes = [
   { path: 'pokemon', component: PokemonComponent },
-  { path: 'dashboard', component: DashboardComponent},
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
+  { path: 'pokedex', component: DashboardComponent},
+  { path: '', redirectTo: '/homePage', pathMatch: 'full'},
   { path: 'pokemon/:id', component: PokemonsDetailComponent},
   { path: 'pokemon-create', component: PokemonCreateComponent},
   { path: 'techStack', component: TechStackComponent},
   { path: 'resume', component: ResumeComponent},
+  { path: 'homePage', component: HomePageComponent},
 ];

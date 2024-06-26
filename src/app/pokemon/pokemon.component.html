@@ -1,13 +1,9 @@
 
 
-<div class="container">
+<div class="flex-container">
+  <div class="flex-child">
   <h2>Poke`mon Database :</h2>
-  <!-- <img
-  src="assets/images/backgroundGrass.png"
-  class="img-fluid rounded"
-  alt="backgroundGrass"
-/> -->
-  <div class="container">
+    <div class="container">
   <ul class="pokemon">
     <li *ngFor="let pokemons of currentPagePokemon">
     <button type="button" class="btn btn-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .5rem;" (click)="deletePokemons(pokemons.id)">X</button>
@@ -18,4 +14,17 @@
   </ul>
   <button style="margin:5px;" (click)="previousPage()" type="button" class="btn btn-success">&lt; -- Previous</button>
   <button style="margin:5px;" (click)="nextPage()" type="button" class="btn btn-success">Next --&gt;</button>
+</div>
+</div>
+<div class="flex-child">
+  <div>
+    <h3>Welcome to the Developer Database.</h3>
+    <br>
+    <h5>You can navigate through the database using the 'Previous' and 'Next buttons.</h5>
+    <br>
+    <h5>Clicking on a name will take you to the 'Update' page where you can make changes to the Pokemons properties.</h5>
+    <br>
+    <h5>If you click the red X button, the coresponding Pokemon will be deleted from the database.</h5>
+  </div>
+</div>
 </div>
